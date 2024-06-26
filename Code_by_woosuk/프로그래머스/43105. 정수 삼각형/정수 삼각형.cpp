@@ -12,16 +12,16 @@ int solution(vector<vector<int>> triangle) {
     
     for(int i=1; i<triangle.size(); i++){
         for(int j=0; j<triangle[i].size(); j++){
-            if(j==0){
+            if(j==0){ //트리 왼쪽 끝
                 dp[i][j] = dp[i-1][j] + triangle[i][j];
             }
-            else if(j == triangle[i].size() - 1){
+            else if(j == triangle[i].size() - 1){ //트리 오른쪽 끝
                 dp[i][j] = dp[i-1][j-1] + triangle[i][j];
             }
-            else
+            else //트리 중간
                 dp[i][j] = max(dp[i-1][j-1] + triangle[i][j], dp[i-1][j] + triangle[i][j]);
             
-            answer = max(dp[i][j], answer);
+            answer = max(dp[i][j], answer); //원래는 마지막행에서 해야합니다..
         }
     }
     
